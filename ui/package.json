@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
-    "@types/react-virtualized": "^9.21.21",
+    "@types/react-virtualized": "^9.21.30",
     "@types/superagent": "^8.1.6",
     "ansi-to-react": "^6.1.6",
     "argo-ui": "git+https://github.com/argoproj/argo-ui.git",
@@ -47,7 +47,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.2.2",
     "react-svg-piechart": "^2.4.2",
-    "react-virtualized": "^9.22.3",
+    "react-virtualized": "^9.22.5",
     "redoc": "^2.0.0-rc.64",
     "rxjs": "^6.6.6",
     "superagent": "^8.1.2",
