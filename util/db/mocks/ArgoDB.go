@@ -355,12 +355,12 @@ func (_m *ArgoDB) GetClusterServersByName(ctx context.Context, name string) ([]s
 	return r0, r1
 }
 
-// GetHydratorCredentials provides a mock function with given fields: ctx, repoURL
-func (_m *ArgoDB) GetHydratorCredentials(ctx context.Context, repoURL string) (*v1alpha1.Repository, error) {
+// GetWriteCredentials provides a mock function with given fields: ctx, repoURL
+func (_m *ArgoDB) GetWriteCredentials(ctx context.Context, repoURL string) (*v1alpha1.Repository, error) {
 	ret := _m.Called(ctx, repoURL)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetHydratorCredentials")
+		panic("no return value specified for GetWriteCredentials")
 	}
 
 	var r0 *v1alpha1.Repository

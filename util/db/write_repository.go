@@ -11,7 +11,7 @@ import (
 	appsv1 "github.com/argoproj/argo-cd/v2/pkg/apis/application/v1alpha1"
 )
 
-func (db *db) GetHydratorCredentials(ctx context.Context, repoURL string) (*appsv1.Repository, error) {
+func (db *db) GetWriteCredentials(ctx context.Context, repoURL string) (*appsv1.Repository, error) {
 	secret, err := db.getRepoCredsSecret(repoURL)
 	if err != nil {
 		if status.Code(err) == codes.NotFound {

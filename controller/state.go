@@ -71,7 +71,7 @@ type AppStateManager interface {
 	CompareAppState(app *v1alpha1.Application, project *v1alpha1.AppProject, revisions []string, sources []v1alpha1.ApplicationSource, noCache bool, noRevisionCache bool, localObjects []string, hasMultipleSources bool, rollback bool) (*comparisonResult, error)
 	SyncAppState(app *v1alpha1.Application, state *v1alpha1.OperationState)
 	GetRepoObjs(app *v1alpha1.Application, sources []v1alpha1.ApplicationSource, appLabelKey string, revisions []string, noCache, noRevisionCache, verifySignature bool, proj *v1alpha1.AppProject, rollback, sendRuntimeState bool) ([]*unstructured.Unstructured, []*apiclient.ManifestResponse, bool, error)
-	ResolveDryRevision(repoURL string, revision string) (string, error)
+	ResolveGitRevision(repoURL string, revision string) (string, error)
 }
 
 // comparisonResult holds the state of an application after the reconciliation
@@ -308,7 +308,8 @@ func (m *appStateManager) GetRepoObjs(app *v1alpha1.Application, sources []v1alp
 	return targetObjs, manifestInfos, revisionUpdated, nil
 }
 
-func (m *appStateManager) ResolveDryRevision(repoURL string, revision string) (string, error) {
+// ResolveGitRevision will resolve the given revision to a full commit SHA. Only works for git.
+func (m *appStateManager) ResolveGitRevision(repoURL string, revision string) (string, error) {
 	conn, repoClient, err := m.repoClientset.NewRepoServerClient()
 	if err != nil {
 		return "", fmt.Errorf("failed to connect to repo server: %w", err)
